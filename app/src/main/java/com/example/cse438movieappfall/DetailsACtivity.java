@@ -1,6 +1,8 @@
 package com.example.cse438movieappfall;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -14,8 +16,9 @@ public class DetailsACtivity extends AppCompatActivity {
 
     Cast cast;
     private ImageView image;
-    private TextView title1, rating1,overview,posterflash;
+    private TextView title1, rating1,overview,posterflash,name;
     private ImageView image1;
+    private ImageView image2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,9 +37,15 @@ public class DetailsACtivity extends AppCompatActivity {
             Glide.with(this).load("https://image.tmdb.org/t/p/w500" + result.getPosterPath()).into(image);
             title1.setText(result.getOriginalTitle());
             rating1.setText(Double.toString(result.getVoteAverage()));
-
+            overview.setText(result.getOverview());
             Glide.with(this).load("https://image.tmdb.org/t/p/w500" + result.getBackdropPath()).into(image1);
 
+
+//            RecyclerView rv = findViewById(R.id.detailsmovie);
+//            rv.setLayoutManager(new GridLayoutManager(this, 2));
+//            cast = (Cast) getIntent().getSerializableExtra("cast");
+//            name =(TextView) findViewById(R.id.name);
+//            image2=(ImageView) findViewById(R.id.posterflash);
         }
     }
 }
